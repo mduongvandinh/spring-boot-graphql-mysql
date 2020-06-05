@@ -1,11 +1,11 @@
-package com.bezkoder.springgraphql.mysql.model;
+package com.omi.bu1.springgraphql.mysql.model;
 
 import javax.persistence.*;
 
 @Entity
 public class Author {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	@Column(name = "name", nullable = false)

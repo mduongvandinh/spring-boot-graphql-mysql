@@ -1,0 +1,15 @@
+type Reaction {
+	id: ID!
+	type: Int!
+	author: Author
+	tutorial: Tutorial
+}
+
+extend type Query {
+	findAllReactions: [Reaction]!
+	countReactions: Long!
+}
+
+extend type Mutation {
+	createReaction(type: Int!, author: ID!, tutorial: ID!): Reaction!
+}

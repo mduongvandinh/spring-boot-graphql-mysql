@@ -1,4 +1,4 @@
-package com.bezkoder.springgraphql.mysql;
+package com.omi.bu1.springgraphql.mysql;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

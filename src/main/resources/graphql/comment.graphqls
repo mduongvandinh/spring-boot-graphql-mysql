@@ -1,0 +1,15 @@
+type Comment {
+	id: ID!
+	contents: String!
+	author: Author
+	tutorial: Tutorial
+}
+
+extend type Query {
+	findAllComments: [Comment]!
+	countComments: Long!
+}
+
+extend type Mutation {
+	createComment(contents: String!, author: ID!, tutorial: ID!): Comment!
+}

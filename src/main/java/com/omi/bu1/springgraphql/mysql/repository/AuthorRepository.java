@@ -1,8 +1,7 @@
-package com.bezkoder.springgraphql.mysql.repository;
+package com.omi.bu1.springgraphql.mysql.repository;
 
+import com.omi.bu1.springgraphql.mysql.model.Author;
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import com.bezkoder.springgraphql.mysql.model.Author;
 
 public interface AuthorRepository extends JpaRepository<Author, Long> {
 

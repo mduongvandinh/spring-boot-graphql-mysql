@@ -1,37 +1,22 @@
-package com.bezkoder.springgraphql.mysql.resolver;
+package com.omi.bu1.springgraphql.mysql.service;
 
-import java.util.Optional;
-
+import com.omi.bu1.springgraphql.mysql.model.Author;
+import com.omi.bu1.springgraphql.mysql.model.Tutorial;
+import com.omi.bu1.springgraphql.mysql.repository.TutorialRepository;
+import com.coxautodev.graphql.tools.GraphQLMutationResolver;
+import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.bezkoder.springgraphql.mysql.model.Author;
-import com.bezkoder.springgraphql.mysql.model.Tutorial;
-import com.bezkoder.springgraphql.mysql.repository.AuthorRepository;
-import com.bezkoder.springgraphql.mysql.repository.TutorialRepository;
-import com.coxautodev.graphql.tools.GraphQLMutationResolver;
-
-import javassist.NotFoundException;
+import java.util.Optional;
 
 @Component
-public class Mutation implements GraphQLMutationResolver {
-	private AuthorRepository authorRepository;
-	private TutorialRepository tutorialRepository;
+public class TutorialMutation implements GraphQLMutationResolver {
+	private final TutorialRepository tutorialRepository;
 
 	@Autowired
-	public Mutation(AuthorRepository authorRepository, TutorialRepository tutorialRepository) {
-		this.authorRepository = authorRepository;
+	public TutorialMutation(TutorialRepository tutorialRepository) {
 		this.tutorialRepository = tutorialRepository;
-	}
-
-	public Author createAuthor(String name, Integer age) {
-		Author author = new Author();
-		author.setName(name);
-		author.setAge(age);
-
-		authorRepository.save(author);
-
-		return author;
 	}
 
 	public Tutorial createTutorial(String title, String description, Long authorId) {

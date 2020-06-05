@@ -3,6 +3,8 @@ type Tutorial {
 	title: String!
 	description: String
 	author: Author
+	commentList: [Comment]
+	reactionList: [Reaction]
 }
 
 extend type Query {

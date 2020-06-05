@@ -1,11 +1,19 @@
-package com.bezkoder.springgraphql.mysql.model;
+package com.omi.bu1.springgraphql.mysql.model;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
+import java.util.List;
 
 @Entity
 public class Tutorial {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	@Column(name = "title", nullable = false)
@@ -18,7 +26,17 @@ public class Tutorial {
 	@JoinColumn(name = "author_id", nullable = false, updatable = false)
 	private Author author;
 
+	@Transient
+	private List<Comment> commentList;
+
+	@Transient
+	private List<Reaction> reactionList;
+
 	public Tutorial() {
+	}
+
+	public Tutorial(Long id) {
+		this.id = id;
 	}
 
 	public Tutorial(String title, String description, Author author) {
@@ -53,6 +71,26 @@ public class Tutorial {
 
 	public void setAuthor(Author author) {
 		this.author = author;
+	}
+
+	public List<Comment> getCommentList() {
+		return commentList;
+	}
+
+	public void setCommentList(List<Comment> commentList) {
+		this.commentList = commentList;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public List<Reaction> getReactionList() {
+		return reactionList;
+	}
+
+	public void setReactionList(List<Reaction> reactionList) {
+		this.reactionList = reactionList;
 	}
 
 	@Override
